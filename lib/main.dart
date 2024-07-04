@@ -8,6 +8,16 @@ String greet(GreetRef ref) {
   return 'Hello, World!';
 }
 
+@riverpod
+class CounterNotifier extends _$CounterNotifier {
+  @override
+  int build() => 0;
+
+  void increment() {
+    state = state + 1;
+  }
+}
+
 void main() {
   runApp(const MyApp());
 }
