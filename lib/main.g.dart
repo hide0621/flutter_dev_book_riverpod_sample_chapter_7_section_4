@@ -20,6 +20,20 @@ final greetProvider = AutoDisposeProvider<String>.internal(
 );
 
 typedef GreetRef = AutoDisposeProviderRef<String>;
+String _$asyncGreetHash() => r'1f07e107ceddc70324218db2b20808304b9193f7';
+
+/// See also [asyncGreet].
+@ProviderFor(asyncGreet)
+final asyncGreetProvider = AutoDisposeFutureProvider<String>.internal(
+  asyncGreet,
+  name: r'asyncGreetProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$asyncGreetHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef AsyncGreetRef = AutoDisposeFutureProviderRef<String>;
 String _$counterNotifierHash() => r'b41c3b270eeaef772b79d7364bbc747f34ed9934';
 
 /// See also [CounterNotifier].

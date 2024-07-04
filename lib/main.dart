@@ -10,6 +10,12 @@ String greet(GreetRef ref) {
 }
 
 @riverpod
+Future<String> asyncGreet(AsyncGreetRef ref) async {
+  await Future.delayed(const Duration(seconds: 1));
+  return 'Hello, World!';
+}
+
+@riverpod
 class CounterNotifier extends _$CounterNotifier {
   @override
   int build() => 0;
