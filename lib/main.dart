@@ -1,4 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+
+part 'main.g.dart';
+
+@riverpod
+String greet(GreetRef ref) {
+  return 'Hello, World!';
+}
 
 void main() {
   runApp(const MyApp());
