@@ -15,6 +15,21 @@ Future<String> asyncGreet(AsyncGreetRef ref) async {
   return 'Hello, World!';
 }
 
+class HomePage extends ConsumerWidget {
+  const HomePage({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final AsyncValue<String> greet = ref.watch(asyncGreetProvider);
+    return Center(
+      child: greet.when(
+          loading: () => const Text('Loading'),
+          data: (greet) => Text(greet),
+          error: (e, st) => Text(e.toString())),
+    );
+  }
+}
+
 @riverpod
 class CounterNotifier extends _$CounterNotifier {
   @override
