@@ -30,13 +30,31 @@ class HomePage extends ConsumerWidget {
   }
 }
 
+// @riverpod
+// class CounterNotifier extends _$CounterNotifier {
+//   @override
+//   int build() => 0;
+//
+//   void increment() {
+//     state = state + 1;
+//   }
+// }
 @riverpod
 class CounterNotifier extends _$CounterNotifier {
   @override
-  int build() => 0;
+  Future<int> build() async {
+    await Future<void>.delayed(const Duration(seconds: 1));
+    return 0;
+  }
 
-  void increment() {
-    state = state + 1;
+  void increment() async {
+    final currentValue = state.valueOrNull;
+    if (currentValue == null) {
+      return;
+    }
+    state = const AsyncLoading();
+    await Future<void>.delayed(const Duration(seconds: 1));
+    state = AsyncValue.data(currentValue + 1);
   }
 }
 
