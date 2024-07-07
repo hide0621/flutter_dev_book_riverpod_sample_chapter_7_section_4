@@ -58,6 +58,36 @@ class CounterNotifier extends _$CounterNotifier {
   }
 }
 
+/// リファクタリング前
+@riverpod
+Future<int> fakeFirstApi(FakeFirstApiRef ref) async {
+  await Future.delayed(const Duration(seconds: 1));
+  return 1;
+}
+
+/// リファクタリング前
+@riverpod
+Future<int> fakeSecondApi(FakeSecondApiRef ref) async {
+  await Future.delayed(const Duration(seconds: 1));
+  return 2;
+}
+
+/// リファクタリング前
+@riverpod
+Future<int> fakeSumApi(FakeSumApiRef ref) async {
+  final AsyncValue<int> firstApiResult = ref.watch(fakeFirstApiProvider);
+  final AsyncValue<int> secondApiResult = ref.watch(fakeSecondApiProvider);
+  return firstApiResult.when(
+    loading: () => 0,
+    data: (firstApiResult) => secondApiResult.when(
+      loading: () => 0,
+      data: (secondApiResult) => firstApiResult + secondApiResult,
+      error: (e, st) => throw e,
+    ),
+    error: (e, st) => throw e,
+  );
+}
+
 void main() {
   runApp(const MyApp());
 }

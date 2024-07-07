@@ -34,6 +34,55 @@ final asyncGreetProvider = AutoDisposeFutureProvider<String>.internal(
 );
 
 typedef AsyncGreetRef = AutoDisposeFutureProviderRef<String>;
+String _$fakeFirstApiHash() => r'89fa2164fe43e77a732f4a71ced641d1e94f53ba';
+
+/// リファクタリング前
+///
+/// Copied from [fakeFirstApi].
+@ProviderFor(fakeFirstApi)
+final fakeFirstApiProvider = AutoDisposeFutureProvider<int>.internal(
+  fakeFirstApi,
+  name: r'fakeFirstApiProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$fakeFirstApiHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef FakeFirstApiRef = AutoDisposeFutureProviderRef<int>;
+String _$fakeSecondApiHash() => r'ac4e0e5c66493e9929e21c14722ebb0e49e2410e';
+
+/// リファクタリング前
+///
+/// Copied from [fakeSecondApi].
+@ProviderFor(fakeSecondApi)
+final fakeSecondApiProvider = AutoDisposeFutureProvider<int>.internal(
+  fakeSecondApi,
+  name: r'fakeSecondApiProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$fakeSecondApiHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef FakeSecondApiRef = AutoDisposeFutureProviderRef<int>;
+String _$fakeSumApiHash() => r'83abc69e9b8459a564344db162f9bd4074679fcf';
+
+/// リファクタリング前
+///
+/// Copied from [fakeSumApi].
+@ProviderFor(fakeSumApi)
+final fakeSumApiProvider = AutoDisposeFutureProvider<int>.internal(
+  fakeSumApi,
+  name: r'fakeSumApiProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$fakeSumApiHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef FakeSumApiRef = AutoDisposeFutureProviderRef<int>;
 String _$counterNotifierHash() => r'afde4a95c71728ed6b2f58b986d3b8a37532c226';
 
 /// See also [CounterNotifier].
