@@ -58,6 +58,36 @@ class CounterNotifier extends _$CounterNotifier {
   }
 }
 
+class Point {
+  Point(this.x, this.y);
+
+  int x;
+  int y;
+}
+
+// final pointProvider = Provider<Point>((ref) {
+//   return Point(0, 0);
+// });
+
+final pointProvider = StateNotifierProvider<PointNotifier, Point>((ref) {
+  return PointNotifier();
+});
+
+class PointNotifier extends StateNotifier<Point> {
+  PointNotifier() : super(Point(0, 0));
+
+  void move(int x, int y) {
+    state = Point(x, y);
+  }
+}
+
+/// selectメソッドを使えばyの値が変化してみ値は通知されない
+/// xの値のみが欲しい際に有効
+int watchFieldXOfPoint(WidgetRef ref) {
+  final x = ref.watch(pointProvider.select((point) => point.x));
+  return x;
+}
+
 /// リファクタリング前
 // @riverpod
 // Future<int> fakeFirstApi(FakeFirstApiRef ref) async {
