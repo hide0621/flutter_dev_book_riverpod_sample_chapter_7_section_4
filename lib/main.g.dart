@@ -250,5 +250,146 @@ final counterNotifierProvider =
 );
 
 typedef _$CounterNotifier = AutoDisposeAsyncNotifier<int>;
+String _$counterNotifier2Hash() => r'57ab3b92365d69f8c0e15d97035582862d7472f6';
+
+abstract class _$CounterNotifier2 extends BuildlessAutoDisposeNotifier<int> {
+  late final int num;
+
+  int build(
+    int num,
+  );
+}
+
+/// See also [CounterNotifier2].
+@ProviderFor(CounterNotifier2)
+const counterNotifier2Provider = CounterNotifier2Family();
+
+/// See also [CounterNotifier2].
+class CounterNotifier2Family extends Family<int> {
+  /// See also [CounterNotifier2].
+  const CounterNotifier2Family();
+
+  /// See also [CounterNotifier2].
+  CounterNotifier2Provider call(
+    int num,
+  ) {
+    return CounterNotifier2Provider(
+      num,
+    );
+  }
+
+  @override
+  CounterNotifier2Provider getProviderOverride(
+    covariant CounterNotifier2Provider provider,
+  ) {
+    return call(
+      provider.num,
+    );
+  }
+
+  static const Iterable<ProviderOrFamily>? _dependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
+
+  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
+      _allTransitiveDependencies;
+
+  @override
+  String? get name => r'counterNotifier2Provider';
+}
+
+/// See also [CounterNotifier2].
+class CounterNotifier2Provider
+    extends AutoDisposeNotifierProviderImpl<CounterNotifier2, int> {
+  /// See also [CounterNotifier2].
+  CounterNotifier2Provider(
+    int num,
+  ) : this._internal(
+          () => CounterNotifier2()..num = num,
+          from: counterNotifier2Provider,
+          name: r'counterNotifier2Provider',
+          debugGetCreateSourceHash:
+              const bool.fromEnvironment('dart.vm.product')
+                  ? null
+                  : _$counterNotifier2Hash,
+          dependencies: CounterNotifier2Family._dependencies,
+          allTransitiveDependencies:
+              CounterNotifier2Family._allTransitiveDependencies,
+          num: num,
+        );
+
+  CounterNotifier2Provider._internal(
+    super._createNotifier, {
+    required super.name,
+    required super.dependencies,
+    required super.allTransitiveDependencies,
+    required super.debugGetCreateSourceHash,
+    required super.from,
+    required this.num,
+  }) : super.internal();
+
+  final int num;
+
+  @override
+  int runNotifierBuild(
+    covariant CounterNotifier2 notifier,
+  ) {
+    return notifier.build(
+      num,
+    );
+  }
+
+  @override
+  Override overrideWith(CounterNotifier2 Function() create) {
+    return ProviderOverride(
+      origin: this,
+      override: CounterNotifier2Provider._internal(
+        () => create()..num = num,
+        from: from,
+        name: null,
+        dependencies: null,
+        allTransitiveDependencies: null,
+        debugGetCreateSourceHash: null,
+        num: num,
+      ),
+    );
+  }
+
+  @override
+  AutoDisposeNotifierProviderElement<CounterNotifier2, int> createElement() {
+    return _CounterNotifier2ProviderElement(this);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is CounterNotifier2Provider && other.num == num;
+  }
+
+  @override
+  int get hashCode {
+    var hash = _SystemHash.combine(0, runtimeType.hashCode);
+    hash = _SystemHash.combine(hash, num.hashCode);
+
+    return _SystemHash.finish(hash);
+  }
+}
+
+mixin CounterNotifier2Ref on AutoDisposeNotifierProviderRef<int> {
+  /// The parameter `num` of this provider.
+  int get num;
+}
+
+class _CounterNotifier2ProviderElement
+    extends AutoDisposeNotifierProviderElement<CounterNotifier2, int>
+    with CounterNotifier2Ref {
+  _CounterNotifier2ProviderElement(super.provider);
+
+  @override
+  int get num => (origin as CounterNotifier2Provider).num;
+}
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

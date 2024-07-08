@@ -9,6 +9,7 @@ String greet(GreetRef ref) {
   return 'Hello, World!';
 }
 
+/// 関数ベースのProviderの場合、第二引数以降にパラメータを記述する
 @riverpod
 String greet2(GreetRef ref, String str) {
   return 'Hello, $str!';
@@ -44,6 +45,7 @@ class HomePage extends ConsumerWidget {
 //     state = state + 1;
 //   }
 // }
+
 @riverpod
 class CounterNotifier extends _$CounterNotifier {
   @override
@@ -60,6 +62,19 @@ class CounterNotifier extends _$CounterNotifier {
     state = const AsyncLoading();
     await Future<void>.delayed(const Duration(seconds: 1));
     state = AsyncValue.data(currentValue + 1);
+  }
+}
+
+/// クラスベースのProviderの場合、buildメソッドの引数にパラメータを記述する
+@riverpod
+class CounterNotifier2 extends _$CounterNotifier2 {
+  @override
+  int build(int num) {
+    return num;
+  }
+
+  void increment() async {
+    state = state + 1;
   }
 }
 
