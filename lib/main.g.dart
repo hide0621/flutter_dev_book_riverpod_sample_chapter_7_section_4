@@ -20,6 +20,154 @@ final greetProvider = AutoDisposeProvider<String>.internal(
 );
 
 typedef GreetRef = AutoDisposeProviderRef<String>;
+String _$greet2Hash() => r'6bb532234e3f602ca9d32e2e29bc7648efcc9ec5';
+
+/// Copied from Dart SDK
+class _SystemHash {
+  _SystemHash._();
+
+  static int combine(int hash, int value) {
+    // ignore: parameter_assignments
+    hash = 0x1fffffff & (hash + value);
+    // ignore: parameter_assignments
+    hash = 0x1fffffff & (hash + ((0x0007ffff & hash) << 10));
+    return hash ^ (hash >> 6);
+  }
+
+  static int finish(int hash) {
+    // ignore: parameter_assignments
+    hash = 0x1fffffff & (hash + ((0x03ffffff & hash) << 3));
+    // ignore: parameter_assignments
+    hash = hash ^ (hash >> 11);
+    return 0x1fffffff & (hash + ((0x00003fff & hash) << 15));
+  }
+}
+
+/// See also [greet2].
+@ProviderFor(greet2)
+const greet2Provider = Greet2Family();
+
+/// See also [greet2].
+class Greet2Family extends Family<String> {
+  /// See also [greet2].
+  const Greet2Family();
+
+  /// See also [greet2].
+  Greet2Provider call(
+    String str,
+  ) {
+    return Greet2Provider(
+      str,
+    );
+  }
+
+  @override
+  Greet2Provider getProviderOverride(
+    covariant Greet2Provider provider,
+  ) {
+    return call(
+      provider.str,
+    );
+  }
+
+  static const Iterable<ProviderOrFamily>? _dependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
+
+  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
+      _allTransitiveDependencies;
+
+  @override
+  String? get name => r'greet2Provider';
+}
+
+/// See also [greet2].
+class Greet2Provider extends AutoDisposeProvider<String> {
+  /// See also [greet2].
+  Greet2Provider(
+    String str,
+  ) : this._internal(
+          (ref) => greet2(
+            ref as Greet2Ref,
+            str,
+          ),
+          from: greet2Provider,
+          name: r'greet2Provider',
+          debugGetCreateSourceHash:
+              const bool.fromEnvironment('dart.vm.product')
+                  ? null
+                  : _$greet2Hash,
+          dependencies: Greet2Family._dependencies,
+          allTransitiveDependencies: Greet2Family._allTransitiveDependencies,
+          str: str,
+        );
+
+  Greet2Provider._internal(
+    super._createNotifier, {
+    required super.name,
+    required super.dependencies,
+    required super.allTransitiveDependencies,
+    required super.debugGetCreateSourceHash,
+    required super.from,
+    required this.str,
+  }) : super.internal();
+
+  final String str;
+
+  @override
+  Override overrideWith(
+    String Function(Greet2Ref provider) create,
+  ) {
+    return ProviderOverride(
+      origin: this,
+      override: Greet2Provider._internal(
+        (ref) => create(ref as Greet2Ref),
+        from: from,
+        name: null,
+        dependencies: null,
+        allTransitiveDependencies: null,
+        debugGetCreateSourceHash: null,
+        str: str,
+      ),
+    );
+  }
+
+  @override
+  AutoDisposeProviderElement<String> createElement() {
+    return _Greet2ProviderElement(this);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is Greet2Provider && other.str == str;
+  }
+
+  @override
+  int get hashCode {
+    var hash = _SystemHash.combine(0, runtimeType.hashCode);
+    hash = _SystemHash.combine(hash, str.hashCode);
+
+    return _SystemHash.finish(hash);
+  }
+}
+
+mixin Greet2Ref on AutoDisposeProviderRef<String> {
+  /// The parameter `str` of this provider.
+  String get str;
+}
+
+class _Greet2ProviderElement extends AutoDisposeProviderElement<String>
+    with Greet2Ref {
+  _Greet2ProviderElement(super.provider);
+
+  @override
+  String get str => (origin as Greet2Provider).str;
+}
+
 String _$asyncGreetHash() => r'1f07e107ceddc70324218db2b20808304b9193f7';
 
 /// See also [asyncGreet].

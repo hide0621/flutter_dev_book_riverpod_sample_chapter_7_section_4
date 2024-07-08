@@ -8,7 +8,10 @@ part of 'sample.dart';
 
 String _$sampleNotifierHash() => r'83f5689fed7d4df73a83ab4bda0657fa1fbaa1e9';
 
-/// See also [SampleNotifier].
+/// 大文字で始まるRiverpodアノテーションを付与し、keepAliveをtrueに設することで
+/// Providerが自動で破棄されなくなる
+///
+/// Copied from [SampleNotifier].
 @ProviderFor(SampleNotifier)
 final sampleNotifierProvider = NotifierProvider<SampleNotifier, int>.internal(
   SampleNotifier.new,

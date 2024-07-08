@@ -10,6 +10,11 @@ String greet(GreetRef ref) {
 }
 
 @riverpod
+String greet2(GreetRef ref, String str) {
+  return 'Hello, $str!';
+}
+
+@riverpod
 Future<String> asyncGreet(AsyncGreetRef ref) async {
   await Future.delayed(const Duration(seconds: 1));
   return 'Hello, World!';
