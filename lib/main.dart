@@ -194,6 +194,7 @@ class MyHomePage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     /// Providerにパラメータを渡せるようにしたコードの場合、以下のように呼び出す
+    /// 以下は関数ベースのProviderの場合のコード
     // final greet2 = ref.watch(greet2Provider('Riverpod'));
     final counter = ref.watch(counterNotifierProvider);
     return Scaffold(
