@@ -197,6 +197,9 @@ class MyHomePage extends ConsumerWidget {
     /// 以下は関数ベースのProviderの場合のコード
     // final greet2 = ref.watch(greet2Provider('Riverpod'));
     final counter = ref.watch(counterNotifierProvider);
+
+    /// 以下はクラスベースのProviderの場合
+    final counterNotifier = counterNotifier2Provider(3);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
@@ -210,7 +213,7 @@ class MyHomePage extends ConsumerWidget {
               'You have pushed the button this many times:',
             ),
             Text(
-              '$counter',
+              '${ref.watch(counterNotifier)}',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
           ],
@@ -218,7 +221,7 @@ class MyHomePage extends ConsumerWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          ref.read(counterNotifierProvider.notifier).increment();
+          ref.read(counterNotifier.notifier).increment();
         },
         tooltip: 'Increment',
         child: const Icon(Icons.add),
