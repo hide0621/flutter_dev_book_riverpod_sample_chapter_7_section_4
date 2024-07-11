@@ -30,6 +30,10 @@ Providerから値を取得する際は可能な限り`watch`を使うように�
 
 一方、値を監視する必要のないボタンのタップイベントや`State`のライフサイクルイベントなどでは`read`を使う。
 
+## riverpod_lintを有効化するために、analysis_options.yamlにcustom_lintを有効化する
+
+詳細は`analysis_options.yaml`を参照
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
